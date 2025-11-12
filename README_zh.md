@@ -1,12 +1,14 @@
 # Busy GPU
 
+[![构建状态](https://github.com/Metaphorme/busy_gpu/actions/workflows/build.yml/badge.svg)](https://github.com/Metaphorme/busy_gpu/actions)
+
 [English document](./README.md) | 中文文档
 
 一个 GPU 压力测试和烤机工具，用于测试 GPU 的稳定性和性能。
 
 ## 编译
 
-使用 Makefile（推荐）：
+### 方法 1：使用 Makefile（推荐）
 
 ```bash
 make          # 编译
@@ -15,7 +17,34 @@ make rebuild  # 重新编译
 make install  # 安装到系统（需要 sudo）
 ```
 
-或者手动编译：
+### 方法 2：使用 CMake
+
+```bash
+# 创建构建目录
+mkdir build
+cd build
+
+# 配置项目
+cmake ..
+
+# 编译
+cmake --build .
+
+# 安装到系统（可选，需要 sudo）
+sudo cmake --install .
+
+# 或者使用传统方式
+sudo make install
+```
+
+清理 CMake 构建：
+
+```bash
+# 删除构建目录
+rm -rf build
+```
+
+### 方法 3：手动编译
 
 ```bash
 nvcc -O3 -use_fast_math busy_gpu.cu -o busy_gpu

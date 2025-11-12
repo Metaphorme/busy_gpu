@@ -1,21 +1,50 @@
 # Busy GPU
 
+[![Build Status](https://github.com/Metaphorme/busy_gpu/actions/workflows/build.yml/badge.svg)](https://github.com/Metaphorme/busy_gpu/actions)
+
 English document | [中文文档](./README_zh.md)
 
 A GPU stress testing and burn-in tool for testing GPU stability and performance.
 
 ## Compilation
 
-Using Makefile (recommended):
+### Method 1: Using Makefile (Recommended)
 
 ```bash
 make          # Build
 make clean    # Clean
 make rebuild  # Rebuild
 make install  # Install to system (requires sudo)
-``````
+```
 
-Or compile manually:
+### Method 2: Using CMake
+
+```bash
+# Create build directory
+mkdir build
+cd build
+
+# Configure project
+cmake ..
+
+# Build
+cmake --build .
+
+# Install to system (optional, requires sudo)
+sudo cmake --install .
+
+# Or use traditional way
+sudo make install
+```
+
+Clean CMake build:
+
+```bash
+# Remove build directory
+rm -rf build
+```
+
+### Method 3: Manual Compilation
 
 ```bash
 nvcc -O3 -use_fast_math busy_gpu.cu -o busy_gpu
